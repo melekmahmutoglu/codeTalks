@@ -6,6 +6,7 @@ const Input = ({ value, onChangeText, placeholder, type, secure }) => {
     return (
         <View style={styles.inputView}>
             <TextInput
+                autoCapitalize='none'
                 style={styles.inputStyle}
                 placeholder={placeholder}
                 onChangeText={onChangeText}

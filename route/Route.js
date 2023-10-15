@@ -20,9 +20,15 @@ const Route = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-                <Stack.Screen name='AuthStack' component={AuthStack} />
-                <Stack.Screen name='Main' component={Main} />
+            <Stack.Navigator>
+                <Stack.Screen name='AuthStack' component={AuthStack} options={{
+                    headerShown: false,
+                }} />
+                <Stack.Screen name='Main' component={Main} options={{
+                    headerShown: true,
+                    title: 'Odalar',
+                    headerBackButtonMenuEnabled: false,
+                }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

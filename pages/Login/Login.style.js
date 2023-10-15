@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../styles/Color/Colors";
 import Fonts from "../../styles/Font/Fonts";
+import Spaces from "../../styles/Space/Space";
 
 export default StyleSheet.create({
     safeContainer: {
@@ -25,4 +26,10 @@ export default StyleSheet.create({
         flex: 1,
 
     },
+    error: {
+        fontWeight: '400',
+        fontSize: 14,
+        color: '#c90d0d',
+        paddingLeft: Spaces.spaceOutside
+    }
 })

@@ -1,9 +1,11 @@
-import { View, Text, SafeAreaView, } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, SafeAreaView, Alert, } from 'react-native'
+import React from 'react'
 import styles from './Sign.style'
 import Input from '../../components/TextInput/Input';
 import Buttons from '../../components/Button/Buttons';
 import { Formik } from 'formik';
+import { singIn } from '../../firebase/FirebaseAuth';
+
 
 const initialFormValues = {
     eposta: '',
@@ -14,16 +16,20 @@ const initialFormValues = {
 const Sign = ({ navigation }) => {
     const appName = 'codetalks';
 
-    const handleSignIn = () => {
-        navigation.navigate('Main')
-    }
-
     const handleBack = () => {
         navigation.goBack();
     }
 
-    const handleFormSubmit = (formValues) => {
-        console.log(formValues);
+    const handleFormSubmit = async (formValues) => {
+        if (formValues.password !== formValues.againPassword) {
+            Alert.alert('Şifreler Uyuşmuyor');
+        }
+        try {
+            const signIn = await singIn(formValues.eposta, formValues.password)
+            navigation.navigate('Main')
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
